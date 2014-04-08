@@ -8,7 +8,7 @@ public class FrameStartGame extends JFrame{
 	public FrameStartGame() {
 		this.setTitle("Tetris");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setSize(1200, 700);
+		this.setSize(1174, 686);
 		this.setResizable(false);
 		Toolkit tool = Toolkit.getDefaultToolkit();
 		Dimension screen = tool.getScreenSize();

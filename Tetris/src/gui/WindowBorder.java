@@ -6,9 +6,10 @@ import javax.swing.ImageIcon;
 
 /*
  * Draw Window Border
- * @author Yukun Su
+ * @author: Yukun Su
  */
 public class WindowBorder {
+	private final int ZERO = 0;
 	private int windowBorderWidth = 9;
 	private Image windowImage = new ImageIcon("Graphics/Windows/window02.jpg").getImage();
 	//window picture width
@@ -43,20 +44,20 @@ public class WindowBorder {
 	
 	public void printWindowBorder(Graphics g){
 		// Draw upper left
-		g.drawImage(windowImage, x, y, x + windowBorderWidth, y + windowBorderWidth, 0, 0,
+		g.drawImage(windowImage, x, y, x + windowBorderWidth, y + windowBorderWidth, ZERO, ZERO,
 				windowBorderWidth, windowBorderWidth, null);
 		// Draw upper middle
 		g.drawImage(windowImage, x + windowBorderWidth, y, x + width - windowBorderWidth, y
-				+ windowBorderWidth, windowBorderWidth, 0, windowWidth - windowBorderWidth,
+				+ windowBorderWidth, windowBorderWidth, ZERO, windowWidth - windowBorderWidth,
 				windowBorderWidth, null);
 		// Draw upper right
 		g.drawImage(windowImage, x + width - windowBorderWidth, y, x + width, y + windowBorderWidth,
-				windowWidth - windowBorderWidth, 0, windowWidth, windowBorderWidth,
+				windowWidth - windowBorderWidth, ZERO, windowWidth, windowBorderWidth,
 				null);
 
 		// Draw middle left
 		g.drawImage(windowImage, x, y + windowBorderWidth, x + windowBorderWidth, y + height
-				- windowBorderWidth, 0, windowBorderWidth, windowBorderWidth, window_height
+				- windowBorderWidth, ZERO, windowBorderWidth, windowBorderWidth, window_height
 				- windowBorderWidth, null);
 		// Draw middle middle
 		g.drawImage(windowImage, x + windowBorderWidth, y + windowBorderWidth, x + width
@@ -70,7 +71,7 @@ public class WindowBorder {
 
 		// Draw lower left
 		g.drawImage(windowImage, x, y + height - windowBorderWidth, x + windowBorderWidth, y + height,
-				0, window_height - windowBorderWidth, windowBorderWidth, window_height,
+				ZERO, window_height - windowBorderWidth, windowBorderWidth, window_height,
 				null);
 		// Draw lower middle
 		g.drawImage(windowImage, x + windowBorderWidth, y + height - windowBorderWidth, x + width
