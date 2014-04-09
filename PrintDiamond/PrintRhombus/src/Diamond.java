@@ -27,12 +27,12 @@ public class Diamond {
 	public void print() {
 		int lowerHalf = 0;
 		for (int i = 0; i < longestEdge; i++) {
-			if (i > longestEdge / 2)
+			if (i > (longestEdge >> 1))
 				lowerHalf += 2;
 
 			for (int j = 0; j < longestEdge; j++) {
-				if ((j >= Math.abs(longestEdge / 2 - i))
-						&& (j <= (longestEdge / 2 + i - lowerHalf)))
+				if ((j >= Math.abs(longestEdge >> 1 - i))
+						&& (j <= (longestEdge >> 1 + i - lowerHalf)))
 					System.out.print(firstSymbol);
 				else
 					System.out.print(secondSymbol);
