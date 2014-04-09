@@ -1,4 +1,4 @@
-package src;
+package CommonSource;
 
 public class Point {
 	

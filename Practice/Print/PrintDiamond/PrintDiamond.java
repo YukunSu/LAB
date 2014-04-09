@@ -1,6 +1,6 @@
-package src;
+package PrintDiamond;
 
-public class PrintRhombus {
+public class PrintDiamond {
 	public static void main(String[] args) {
 		char one = '*';
 		char two = ' ';

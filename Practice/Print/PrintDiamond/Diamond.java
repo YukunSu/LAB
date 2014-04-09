@@ -1,4 +1,4 @@
-package src;
+package PrintDiamond;
 
 public class Diamond {
 
@@ -38,7 +38,6 @@ public class Diamond {
 
 				if (j == longestEdge - 1)
 					System.out.println();
-				
 			}
 		}
 	}
