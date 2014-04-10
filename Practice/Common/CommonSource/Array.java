@@ -8,9 +8,8 @@ public class Array {
 
 	public Array(int[] array) {
 		intArray = new int[array.length];
-		for (int i = 0; i < intArray.length; i++) {
+		for (int i = 0; i < intArray.length; i++) 
 			intArray[i] = array[i];
-		}
 	}
 
 	public int getArrayLength() {
@@ -36,8 +35,7 @@ public class Array {
 			if (i < arrayAddin.getArrayLength())
 				mergedArray[i] = this.intArray[i];
 			else
-				mergedArray[i] = arrayAddin.getElement(i
-						- arrayAddin.getArrayLength());
+				mergedArray[i] = arrayAddin.getElement(i - arrayAddin.getArrayLength());
 		}
 		this.intArray = mergedArray;
 	}
@@ -52,21 +50,12 @@ public class Array {
 		}
 	}
 
-	public void reverseArray() {
-		int temp = 0;
-		for (int i = 0; i < (intArray.length >> 1); i++) {
-			temp = intArray[i];
-			intArray[i] = intArray[intArray.length - i - 1];
-			intArray[intArray.length - i - 1] = temp;
-		}
-	}
-
 	public void quickSort(int low, int high) {
 		int i = low;
 		int j = high;
 		// Get the pivot element from the middle of the list
 		int pivot = this.intArray[low + ((high - low) >> 1)];
-
+		
 		// Divide into two lists
 		while (i <= j) {
 			// If the current value from the left list is smaller then the pivot
@@ -79,7 +68,7 @@ public class Array {
 			while (this.intArray[j] > pivot) {
 				j--;
 			}
-
+			
 			// If we have found a values in the left list which is larger then
 			// the pivot element and if we have found a value in the right list
 			// which is smaller then the pivot element then we exchange the
@@ -96,6 +85,11 @@ public class Array {
 			quickSort(low, j);
 		if (i < high)
 			quickSort(i, high);
+	}
+	
+	public void reverseArray() {
+		for (int i = 0; i < (intArray.length >> 1); i++) 
+			swap(i, intArray.length - i - 1);
 	}
 
 	public void swap(int i, int j) {
