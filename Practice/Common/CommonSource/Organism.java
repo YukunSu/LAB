@@ -18,4 +18,8 @@ public class Organism {
 	public void myName(){
 		System.out.println("My name is " + this.name + ".");
 	}
+	
+	public void move(){
+		System.out.println("Maybe I can move.");
+	}
 }

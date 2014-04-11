@@ -4,45 +4,55 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-/*
- * Draw Window Border
- * @author: Yukun Su
+/**
+ * Draw window
+ * @author Yukun
+ *
  */
-public class WindowBorder {
-	private final int ZERO = 0;
-	private int windowBorderWidth = 9;
-	private Image windowImage = new ImageIcon("Graphics/Windows/window02.jpg").getImage();
+public abstract class Window {
+	protected final int ZERO = 0;
+	protected int windowBorderWidth = 9;
+	protected int DistanceTitle = 16;
+	protected Image windowImage = new ImageIcon("Graphics/Windows/window01.png").getImage();
 	//window picture width
-	private int windowWidth = windowImage.getWidth(null);
+	protected int windowWidth = windowImage.getWidth(null);
 	//window picture height
-	private int window_height  = windowImage.getHeight(null);
+	protected int window_height  = windowImage.getHeight(null);
 	//x coordinate of window's upper left corner
-	private int x;
+	protected int x;
 	//y coordinate of window's upper left corner
-	private int y;
+	protected int y;
 	//window width
-	private int width;
+	protected int width;
 	//window height
-	private int height;
+	protected int height;
 	
-	public WindowBorder(int x, int y, int w, int h){
+	protected Window(int x, int y, int w, int h){
 		this.x = x;
 		this.y = y;
 		this.width = w;
 		this.height = h;
 	}
 	
-	public void setWindowBorderWidth(int border){
+	protected void setWindowBorderWidth(int border){
 		windowBorderWidth = border;
 	}
 	
-	public void setWindowImage(String picNameExt){
+	protected void setWindowImage(String picNameExt){
 		windowImage  = new ImageIcon("Graphics/Windows/"+ picNameExt).getImage();
 		windowWidth = windowImage.getWidth(null);
 		window_height = windowImage.getHeight(null);
 	}
 	
-	public void printWindowBorder(Graphics g){
+	protected void setDistanceTitle(int distance){
+		this.DistanceTitle = distance;
+	}
+	
+	/**
+	 * Draw window
+	 * @param g
+	 */
+	protected void printWindowBorder(Graphics g){
 		// Draw upper left
 		g.drawImage(windowImage, x, y, x + windowBorderWidth, y + windowBorderWidth, ZERO, ZERO,
 				windowBorderWidth, windowBorderWidth, null);
@@ -83,5 +93,11 @@ public class WindowBorder {
 				y + height, windowWidth - windowBorderWidth, window_height
 						- windowBorderWidth, windowWidth, window_height, null);
 	}
+
+	/**
+	 * Refresh window
+	 * @param g
+	 */
+	abstract public void paint(Graphics g);
 
 }

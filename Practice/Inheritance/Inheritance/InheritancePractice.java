@@ -9,8 +9,11 @@ public class InheritancePractice {
 		Organism b = new Animalia("Metazoan");
 		Animalia c = new Animalia("Metazoan");
 		Animalia d = (Animalia) b;
-		a.metabolism();;
+		a.metabolism();
+		a.move();
+		
 		b.heredity();
+		b.move();
 		
 		c.myName();
 		c.metabolism();

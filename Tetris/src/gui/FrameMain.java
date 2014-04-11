@@ -4,8 +4,13 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 
-public class FrameStartGame extends JFrame{
-	public FrameStartGame() {
+/**
+ * 
+ * @author Yukun
+ *
+ */
+public class FrameMain extends JFrame{
+	public FrameMain() {
 		this.setTitle("Tetris");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(1174, 686);
