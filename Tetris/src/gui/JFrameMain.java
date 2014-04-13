@@ -9,8 +9,8 @@ import javax.swing.JFrame;
  * @author Yukun
  *
  */
-public class FrameMain extends JFrame{
-	public FrameMain() {
+public class JFrameMain extends JFrame{
+	public JFrameMain() {
 		this.setTitle("Tetris");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(1174, 686);
@@ -18,6 +18,6 @@ public class FrameMain extends JFrame{
 		Toolkit tool = Toolkit.getDefaultToolkit();
 		Dimension screen = tool.getScreenSize();
 		this.setLocation((screen.width-this.getWidth())/2, (screen.height-this.getHeight())/2);
-		this.setContentPane(new PanelMain());
+		this.setContentPane(new JPanelMain());
 	}
 }

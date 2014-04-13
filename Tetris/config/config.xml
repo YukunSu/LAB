@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<game>
+	<frame width="1174" height="686" padding="16" border="9">
+		<window className="gui.WindowAuthor" x="796" y="513" w="338" h="113" />
+		<window className="gui.WindowBackground" x="0" y="0" w="0" h="0" />
+		<window className="gui.WindowButtons" x="796" y="32" w="338" h="124" />
+		<window className="gui.WindowDatabase" x="40" y="32" w="338" h="281" />
+		<window className="gui.WindowGame" x="418" y="32" w="338" h="594" />
+		<window className="gui.WindowLevel" x="976" y="188" w="158" h="148" />
+		<window className="gui.WindowLocalRecord" x="40" y="345" w="338" h="281" />
+		<window className="gui.WindowNext" x="796" y="188" w="176" h="148" />
+		<window className="gui.WindowScore" x="796" y="368" w="338" h="113" />
+	</frame>
+	<system>
+
+	</system>
+	<data>
+
+	</data>
+</game>
