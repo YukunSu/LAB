@@ -2,7 +2,11 @@ package gui;
 
 import java.awt.Graphics;
 import java.awt.Image;
+
 import javax.swing.ImageIcon;
+
+import config.ConfigFactory;
+import config.ConfigGame;
 
 /**
  * Draw window
@@ -11,8 +15,9 @@ import javax.swing.ImageIcon;
  */
 public abstract class Window {
 	protected final int ZERO = 0;
-	protected int windowBorderWidth = 9;
-	protected int DistanceTitle = 16;
+	ConfigGame gameConfig = ConfigFactory.getConfigGame();
+	protected int windowBorderWidth = gameConfig.getWindowBorderSize();
+	protected int DistanceTitle = gameConfig.getPadding();
 	protected Image windowImage = new ImageIcon("Graphics/Windows/window01.png").getImage();
 	//window picture width
 	protected int windowWidth = windowImage.getWidth(null);

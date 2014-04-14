@@ -1,7 +1,17 @@
 package gui;
 
 import java.awt.Graphics;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JPanel;
+
+import config.ConfigFactory;
+import config.ConfigGame;
+import config.ConfigWindow;
+import control.GameController;
+import control.PlayerController;
 
 /**
  * 
@@ -10,28 +20,56 @@ import javax.swing.JPanel;
  */
 public class JPanelMain extends JPanel {
 
-	private Window[] windows = null;
+	private List<Window> windows = null;
 
 	public JPanelMain() {
-		windows = new Window[] {
-				//TODO hard coded, change after (config.xml)
-				new WindowBackground(0, 0, 0, 0), //always be first
-				new WindowAuthor(40*3+338*2, 32*4+148+124+113, 320 + 18, 113),
-				new WindowButtons(40*3+338*2, 32, 320 + 18, 124),
-				new WindowDatabase(40, 32, 320 + 18, 281),
-				new WindowGame(418, 32, 320 + 18, 576 + 18),
-				new WindowLevel(40*3+338*2+176+4, 32*2+124, 158, 148),
-				new WindowLocalRecord(40, 32 + 281 + 32, 320 + 18, 281),
-				new WindowNext(40*3+338*2, 32*2+124, 176, 148),
-				new WindowScore(40*3+338*2, 32*3+148+124, 320 + 18, 113)
-		};
+		initializeComponent();
+		initializeWindow();
+	}
+	
+	/**
+	 * Initialize Component and add key listener
+	 */
+	private void initializeComponent() {
+		GameController gameCtrl = new GameController(this);
+		this.addKeyListener(new PlayerController(gameCtrl));
+	}
+
+	/**
+	 *  Initialize Window
+	 */
+	private void initializeWindow(){
+		try{
+			//Get game configuration
+			ConfigGame configGame = ConfigFactory.getConfigGame();
+			//Get window configuration
+			List<ConfigWindow> configWindow = configGame.getListConfigWindow();
+			//Create an array for all the windows in frame
+			windows = new ArrayList<Window>(configWindow.size());
+			//Create window objects
+			for(ConfigWindow singleConfigWindow : configWindow){
+				//Injection
+				//Get class object
+				Class<?> c = Class.forName(singleConfigWindow.getClassName());
+				//Get constructor of Window
+				Constructor<?> constructor = c.getConstructor(int.class, int.class, int.class, int.class);
+				//Create object using the constructor
+				Window w = (Window)constructor.newInstance(
+						singleConfigWindow.getX(), singleConfigWindow.getY(), 
+						singleConfigWindow.getW(), singleConfigWindow.getH());
+				windows.add(w);
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
-		// Refresh windows
-		for (int i = 0; i < windows.length; i++) {
-			windows[i].paint(g);
-		}
+		//May have issues without the line below
+		super.paintComponent(g);
+		// Paint windows
+		for (int i = 0; i < windows.size(); windows.get(i++).paint(g));
+		this.requestFocus();
 	}
 }
