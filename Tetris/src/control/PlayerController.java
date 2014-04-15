@@ -1,14 +1,14 @@
 package control;
 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
  * 
  * @author Yukun
  *
  */
-public class PlayerController implements KeyListener{
+public class PlayerController extends KeyAdapter{
 
 	private GameController gameCtrl;
 	
@@ -16,18 +16,11 @@ public class PlayerController implements KeyListener{
 		this.gameCtrl = gameCtrl;
 	}
 	
-	@Override
-	public void keyReleased(KeyEvent e) {
-		System.out.println(e.getKeyChar()+", ");
-	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// not used
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// not used
+		System.out.println(e.getKeyCode());
 	}
 }

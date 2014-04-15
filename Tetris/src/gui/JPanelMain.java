@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import service.GameService;
 import config.ConfigFactory;
 import config.ConfigGame;
 import config.ConfigWindow;
@@ -31,8 +32,7 @@ public class JPanelMain extends JPanel {
 	 * Initialize Component and add key listener
 	 */
 	private void initializeComponent() {
-		GameController gameCtrl = new GameController(this);
-		this.addKeyListener(new PlayerController(gameCtrl));
+		this.addKeyListener(new PlayerController(new GameController(this, new GameService())));
 	}
 
 	/**
