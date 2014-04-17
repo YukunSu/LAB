@@ -6,21 +6,21 @@ import java.awt.event.KeyEvent;
 /**
  * 
  * @author Yukun
- *
+ * 
  */
-public class PlayerController extends KeyAdapter{
+public class PlayerController extends KeyAdapter {
 
-	private GameController gameCtrl;
-	
-	public PlayerController(GameController gameCtrl){
-		this.gameCtrl = gameCtrl;
-	}
-	
-	/**
+    private GameController gameCtrl;
+
+    public PlayerController(GameController gameCtrl) {
+        this.gameCtrl = gameCtrl;
+    }
+
+    /**
 	 * 
 	 */
-	@Override
-	public void keyPressed(KeyEvent e) {
-		System.out.println(e.getKeyCode());
-	}
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println(e.getKeyCode());
+    }
 }
