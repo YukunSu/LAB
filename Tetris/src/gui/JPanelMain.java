@@ -7,12 +7,11 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import service.GameService;
 import config.ConfigFactory;
 import config.ConfigGame;
 import config.ConfigWindow;
-import control.GameController;
 import control.PlayerController;
+import dto.GameDto;
 
 /**
  * 
@@ -23,16 +22,26 @@ public class JPanelMain extends JPanel {
 
     private List<Window> windows = null;
 
-    public JPanelMain() {
+    private GameDto dto = null;
+
+    public JPanelMain(GameDto dto) {
+        this.dto = dto;
         initializeComponent();
         initializeWindow();
+    }
+
+    /**
+     * Install player controller
+     * @param playerController
+     */
+    public void setPlayerController(PlayerController playerController){
+        this.addKeyListener(playerController);
     }
 
     /**
      * Initialize Component and add key listener
      */
     private void initializeComponent() {
-        this.addKeyListener(new PlayerController(new GameController(this, new GameService())));
     }
 
     /**
@@ -48,16 +57,19 @@ public class JPanelMain extends JPanel {
             windows = new ArrayList<Window>(configWindow.size());
             //Create window objects
             for(ConfigWindow singleConfigWindow : configWindow){
-                //Injection
+                //Reflection
                 //Get class object
                 Class<?> c = Class.forName(singleConfigWindow.getClassName());
                 //Get constructor of Window
                 Constructor<?> constructor = c.getConstructor(int.class, int.class, int.class, int.class);
                 //Create object using the constructor
-                Window w = (Window)constructor.newInstance(
+                Window window = (Window)constructor.newInstance(
                         singleConfigWindow.getX(), singleConfigWindow.getY(), 
                         singleConfigWindow.getW(), singleConfigWindow.getH());
-                windows.add(w);
+                //Set game data source to each window
+                window.setDto(this.dto);
+                //Collect windows
+                windows.add(window);
             }
         }catch (Exception e){
             e.printStackTrace();

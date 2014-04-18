@@ -1,6 +1,5 @@
 package start;
 
-import gui.JFrameMain;
 
 /**
  * 
@@ -9,7 +8,7 @@ import gui.JFrameMain;
  */
 public class StartGame {
     public static void main(String[] args) {
-        JFrameMain mainWindow = new JFrameMain();
-        mainWindow.setVisible(true);
+        Install install = new Install();
+        install.run();
     }
 }

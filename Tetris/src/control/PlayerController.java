@@ -16,11 +16,8 @@ public class PlayerController extends KeyAdapter {
         this.gameCtrl = gameCtrl;
     }
 
-    /**
-	 * 
-	 */
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println(e.getKeyCode());
+        this.gameCtrl.test();
     }
 }

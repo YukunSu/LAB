@@ -25,4 +25,9 @@ public class GameController {
         this.panelMain = panel;
         this.gameService = gameService;
     }
+
+    public void test() {
+        this.gameService.gameTest();
+        this.panelMain.repaint();
+    }
 }

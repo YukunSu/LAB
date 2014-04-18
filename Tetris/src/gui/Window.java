@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 import config.ConfigFactory;
 import config.ConfigGame;
+import dto.GameDto;
 
 /**
  * Draw window
@@ -19,20 +20,35 @@ public abstract class Window {
     ConfigGame gameConfig = ConfigFactory.getConfigGame();
     protected int windowBorderWidth = gameConfig.getWindowBorderSize();
     protected int DistanceTitle = gameConfig.getPadding();
-    protected Image windowImage = new ImageIcon("Graphics/Windows/window01.png")
-            .getImage();
-    // window picture width
+    protected Image windowImage = new ImageIcon("Graphics/Windows/window01.png").getImage();
+    /**
+     * Window picture width
+     */
     protected int windowWidth = windowImage.getWidth(null);
-    // window picture height
+    /**
+     * Window picture height
+     */
     protected int window_height = windowImage.getHeight(null);
-    // x coordinate of window's upper left corner
+    /**
+     * X coordinate of window's upper left corner
+     */
     protected int x;
-    // y coordinate of window's upper left corner
+    /**
+     * Y coordinate of window's upper left corner
+     */
     protected int y;
-    // window width
+    /**
+     * Window width
+     */
     protected int width;
-    // window height
+    /**
+     * Window height
+     */
     protected int height;
+    /**
+     * Game data source
+     */
+    protected GameDto dto = null;
 
     protected Window(int x, int y, int w, int h) {
         this.x = x;
@@ -105,6 +121,10 @@ public abstract class Window {
                 - windowBorderWidth, x + width, y + height, windowWidth
                 - windowBorderWidth, window_height - windowBorderWidth,
                 windowWidth, window_height, null);
+    }
+
+    public void setDto(GameDto dto){
+        this.dto = dto;
     }
 
     /**

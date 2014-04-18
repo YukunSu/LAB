@@ -14,7 +14,7 @@ import config.ConfigGame;
  * 
  */
 public class JFrameMain extends JFrame {
-    public JFrameMain() {
+    public JFrameMain(JPanelMain panelMain) {
         ConfigGame gameConfig = ConfigFactory.getConfigGame();
         this.setTitle(gameConfig.getTitle());
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -25,6 +25,7 @@ public class JFrameMain extends JFrame {
         int x = (screen.width - this.getWidth()) >> 1;
         int y = (screen.height - this.getHeight()) >> 1;
         this.setLocation(x, y);
-        this.setContentPane(new JPanelMain());
+        this.setContentPane(panelMain);
+        this.setVisible(true);
     }
 }
