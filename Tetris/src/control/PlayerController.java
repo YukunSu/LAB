@@ -18,6 +18,42 @@ public class PlayerController extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        this.gameCtrl.test();
+        // TODO change after
+        switch (e.getKeyCode()) {
+        case KeyEvent.VK_UP:
+            this.gameCtrl.keyUp();
+            break;
+
+        case KeyEvent.VK_DOWN:
+            this.gameCtrl.keyDown();
+            break;
+
+        case KeyEvent.VK_LEFT:
+            this.gameCtrl.keyLeft();
+            break;
+
+        case KeyEvent.VK_RIGHT:
+            this.gameCtrl.keyRight();
+            break;
+
+        case KeyEvent.VK_W:
+            this.gameCtrl.keyUp();
+            break;
+
+        case KeyEvent.VK_S:
+            this.gameCtrl.keyDown();
+            break;
+
+        case KeyEvent.VK_A:
+            this.gameCtrl.keyLeft();
+            break;
+
+        case KeyEvent.VK_D:
+            this.gameCtrl.keyRight();
+            break;
+
+        default:
+            break;
+        }
     }
 }

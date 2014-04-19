@@ -4,8 +4,9 @@ import gui.JPanelMain;
 import service.GameService;
 
 /**
- * Receive actions triggered by users Control game interface and algorithm
- * 
+ * Receive actions triggered by users 
+ * Control game interface and algorithm
+ * Refresh game
  * @author Yukun
  * 
  */
@@ -26,8 +27,23 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    public void test() {
-        this.gameService.gameTest();
+    public void keyUp() {
+        this.gameService.keyUp();
+        this.panelMain.repaint();
+    }
+
+    public void keyDown() {
+        this.gameService.keyDown();
+        this.panelMain.repaint();
+    }
+
+    public void keyLeft() {
+        this.gameService.keyLeft();
+        this.panelMain.repaint();
+    }
+
+    public void keyRight() {
+        this.gameService.keyRight();
         this.panelMain.repaint();
     }
 }
