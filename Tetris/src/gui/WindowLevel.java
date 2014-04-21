@@ -28,6 +28,6 @@ public class WindowLevel extends Window {
         //Draw window title
         g.drawImage(IMAGE_LOCAL_RECORD, this.x + centerX, this.y + DistanceTitle, null);
         //Draw level
-        this.drawLevelNumberLeftPad(OFFSET + centerX, 60, this.dto.getLevel(), 2, g);
+        this.drawNumberLeftPad(OFFSET + centerX, 60, this.dto.getLevel(), 2, g);
     }
 }

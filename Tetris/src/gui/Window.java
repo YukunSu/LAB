@@ -21,9 +21,9 @@ public abstract class Window {
     protected int windowBorderWidth = gameConfig.getWindowBorderSize();
     protected int DistanceTitle = gameConfig.getPadding();
     protected Image windowImage = new ImageIcon("Graphics/Windows/window02.png").getImage();
-    protected static final Image IMAGE_LEVEL_NUMBER = new ImageIcon("Graphics/Words/num02.png").getImage();
-    protected static final int LEVEL_NUMBER_WIDTH = IMAGE_LEVEL_NUMBER.getWidth(null) / 10;
-    protected static final int LEVEL_NUMBER_HEIGHT = IMAGE_LEVEL_NUMBER.getHeight(null);
+    protected static final Image IMAGE_NUMBER = new ImageIcon("Graphics/Words/num02.png").getImage();
+    protected static final int NUMBER_WIDTH = IMAGE_NUMBER.getWidth(null) / 10;
+    protected static final int NUMBER_HEIGHT = IMAGE_NUMBER.getHeight(null);
     /**
      * Window picture width
      */
@@ -138,17 +138,17 @@ public abstract class Window {
      * @param maxBit
      * @param g
      */
-    protected void drawLevelNumberLeftPad(int x, int y, int number, int maxBit, Graphics g){
+    protected void drawNumberLeftPad(int x, int y, int number, int maxBit, Graphics g){
         String num = Integer.toString(number);
         for (int i = 0; i < maxBit; i++) {
             if(maxBit - i <= num.length()){
                 int index = i - maxBit + num.length();
                 int singleNum = num.charAt(index) - '0';
-                g.drawImage(IMAGE_LEVEL_NUMBER, 
-                        this.x + x + LEVEL_NUMBER_WIDTH * i, this.y + y, 
-                        this.x + x + LEVEL_NUMBER_WIDTH * (i + 1), this.y + y + LEVEL_NUMBER_HEIGHT,
-                        singleNum * LEVEL_NUMBER_WIDTH, 0, 
-                        (singleNum + 1) * LEVEL_NUMBER_WIDTH, LEVEL_NUMBER_HEIGHT, null);
+                g.drawImage(IMAGE_NUMBER, 
+                        this.x + x + NUMBER_WIDTH * i, this.y + y, 
+                        this.x + x + NUMBER_WIDTH * (i + 1), this.y + y + NUMBER_HEIGHT,
+                        singleNum * NUMBER_WIDTH, 0, 
+                        (singleNum + 1) * NUMBER_WIDTH, NUMBER_HEIGHT, null);
             }
         }
     }

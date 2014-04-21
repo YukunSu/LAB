@@ -46,4 +46,10 @@ public class GameController {
         this.gameService.keyRight();
         this.panelMain.repaint();
     }
+
+    // TODO TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public void test() {
+        this.gameService.testLevelUP();
+        this.panelMain.repaint();
+    }
 }

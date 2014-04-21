@@ -27,6 +27,16 @@ public class GameDto {
 
     private int lineRemoved;
 
+    public GameDto(){
+        init();
+    }
+
+    public void init(){
+        //TODO
+        this.gameMap = new boolean[10][18];
+        // TODO
+    }
+
     public List<Player> getDatabaseRecord() {
         return databaseRecord;
     }

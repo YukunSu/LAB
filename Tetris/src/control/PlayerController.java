@@ -52,6 +52,10 @@ public class PlayerController extends KeyAdapter {
             this.gameCtrl.keyRight();
             break;
 
+        case KeyEvent.VK_H:
+            this.gameCtrl.test();
+            break;
+
         default:
             break;
         }
