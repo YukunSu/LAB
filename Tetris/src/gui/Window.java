@@ -20,7 +20,10 @@ public abstract class Window {
     ConfigGame gameConfig = ConfigFactory.getConfigGame();
     protected int windowBorderWidth = gameConfig.getWindowBorderSize();
     protected int DistanceTitle = gameConfig.getPadding();
-    protected Image windowImage = new ImageIcon("Graphics/Windows/window01.png").getImage();
+    protected Image windowImage = new ImageIcon("Graphics/Windows/window02.png").getImage();
+    protected static final Image IMAGE_LEVEL_NUMBER = new ImageIcon("Graphics/Words/num02.png").getImage();
+    protected static final int LEVEL_NUMBER_WIDTH = IMAGE_LEVEL_NUMBER.getWidth(null) / 10;
+    protected static final int LEVEL_NUMBER_HEIGHT = IMAGE_LEVEL_NUMBER.getHeight(null);
     /**
      * Window picture width
      */
@@ -125,6 +128,29 @@ public abstract class Window {
 
     public void setDto(GameDto dto){
         this.dto = dto;
+    }
+
+    /**
+     * Paint numbers
+     * @param x
+     * @param y
+     * @param number
+     * @param maxBit
+     * @param g
+     */
+    protected void drawLevelNumberLeftPad(int x, int y, int number, int maxBit, Graphics g){
+        String num = Integer.toString(number);
+        for (int i = 0; i < maxBit; i++) {
+            if(maxBit - i <= num.length()){
+                int index = i - maxBit + num.length();
+                int singleNum = num.charAt(index) - '0';
+                g.drawImage(IMAGE_LEVEL_NUMBER, 
+                        this.x + x + LEVEL_NUMBER_WIDTH * i, this.y + y, 
+                        this.x + x + LEVEL_NUMBER_WIDTH * (i + 1), this.y + y + LEVEL_NUMBER_HEIGHT,
+                        singleNum * LEVEL_NUMBER_WIDTH, 0, 
+                        (singleNum + 1) * LEVEL_NUMBER_WIDTH, LEVEL_NUMBER_HEIGHT, null);
+            }
+        }
     }
 
     /**

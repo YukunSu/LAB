@@ -12,8 +12,11 @@ import javax.swing.ImageIcon;
  */
 public class WindowLevel extends Window {
 
-    private Image ImageLocalRecord = new ImageIcon("Graphics/Words/level.png")
-            .getImage();
+    private static final Image IMAGE_LOCAL_RECORD = new ImageIcon("Graphics/Words/level.png").getImage();
+
+    private static final int LOCAL_RECORD_WIDTH = IMAGE_LOCAL_RECORD.getWidth(null);
+
+    private static final int OFFSET = 6;
 
     public WindowLevel(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -21,6 +24,10 @@ public class WindowLevel extends Window {
 
     public void paint(Graphics g) {
         this.printWindowBorder(g);
-        g.drawImage(ImageLocalRecord, this.x + DistanceTitle, this.y + DistanceTitle, null);
+        int centerX = this.width - LOCAL_RECORD_WIDTH >> 1;
+        //Draw window title
+        g.drawImage(IMAGE_LOCAL_RECORD, this.x + centerX, this.y + DistanceTitle, null);
+        //Draw level
+        this.drawLevelNumberLeftPad(OFFSET + centerX, 60, this.dto.getLevel(), 2, g);
     }
 }

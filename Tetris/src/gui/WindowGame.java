@@ -14,10 +14,11 @@ import javax.swing.ImageIcon;
  */
 public class WindowGame extends Window {
 
-    private static Image ACT = new ImageIcon("Graphics/Images/rect.png") .getImage();
+    private static final Image ACT = new ImageIcon("Graphics/Images/rect.png") .getImage();
 
-    private static int ACTSIZE = 32;
-    
+    // TODO config
+    private static final int SIZE_ROL = 5;
+
     public WindowGame(int x, int y, int w, int h) {
         super(x, y, w, h);
     }
@@ -25,13 +26,37 @@ public class WindowGame extends Window {
     public void paint(Graphics g) {
         this.printWindowBorder(g);
         Point[] points = this.dto.getGameAct().getActPoints();
+        //Get tetris type code
+        int typeCode = this.dto.getGameAct().getTypeCode();
+        //Print tetris
         for (int i = 0; i<points.length;i++){
-            g.drawImage(ACT, 
-                    (int)(this.x+points[i].getX()*ACTSIZE), 
-                    (int)(this.y+points[i].getY()*ACTSIZE),
-                    (int)(this.x+points[i].getX()*ACTSIZE + ACTSIZE), 
-                    (int)(this.y+points[i].getY()*ACTSIZE + ACTSIZE), 
-                    32, 0, 64, 32, null);
+            drawTetris(points[i].x, points[i].y, typeCode+1, g);
         }
+
+        //Print map
+        boolean[][] gameMap = this.dto.getGameMap();
+        for (int x = 0; x < gameMap.length; x++) {
+            for (int y = 0; y < gameMap[x].length; y++) {
+                if(gameMap[x][y]){
+                    drawTetris(x, y, 0, g);
+                }
+            }
+        }
+    }
+
+    /**
+     * Draw tetris according to their points
+     * @param x
+     * @param y
+     * @param imgIndex
+     * @param g
+     */
+    private void drawTetris(int x, int y, int imgIndex, Graphics g){
+        g.drawImage(ACT, 
+                9+this.x+(x << SIZE_ROL), 
+                9+this.y+(y << SIZE_ROL),
+                9+this.x+(x + 1 << SIZE_ROL), 
+                9+this.y+(y + 1 << SIZE_ROL), 
+                imgIndex << SIZE_ROL, 0, imgIndex + 1 << SIZE_ROL, 1 << SIZE_ROL, null);
     }
 }
