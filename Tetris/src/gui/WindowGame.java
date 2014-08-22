@@ -1,11 +1,7 @@
 package gui;
 
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
-
-import javax.swing.ImageIcon;
 
 /**
  * 
@@ -13,8 +9,6 @@ import javax.swing.ImageIcon;
  * 
  */
 public class WindowGame extends Window {
-
-    private static final Image ACT = new ImageIcon("Graphics/Images/rect.png") .getImage();
 
     // TODO config
     private static final int SIZE_ROL = 5;
@@ -52,7 +46,7 @@ public class WindowGame extends Window {
      * @param g
      */
     private void drawTetris(int x, int y, int imgIndex, Graphics g){
-        g.drawImage(ACT, 
+        g.drawImage(Images.ACT, 
                 9+this.x+(x << SIZE_ROL), 
                 9+this.y+(y << SIZE_ROL),
                 9+this.x+(x + 1 << SIZE_ROL), 
