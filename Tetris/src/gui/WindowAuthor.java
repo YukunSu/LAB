@@ -14,5 +14,6 @@ public class WindowAuthor extends Window {
 
     public void paint(Graphics g) {
         this.printWindowBorder(g);
+        this.drawImageAtCenter(Images.SIGNATUR, g);
     }
 }
