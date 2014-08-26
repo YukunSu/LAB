@@ -1,9 +1,11 @@
 package service;
 
 import java.awt.Point;
+import java.util.List;
 import java.util.Random;
 
 import dto.GameDto;
+import dto.Player;
 import entity.GameAct;
 
 /**
@@ -74,6 +76,24 @@ public class GameService {
 
     //TODO TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void testLevelUP() {
-        this.dto.setLevel(this.dto.getLevel()+1);
+        int point = this.dto.getCurrentScore();
+        int rmlines = this.dto.getLineRemoved();
+        int lvl = this.dto.getLevel();
+        point += 10;
+        rmlines++;
+        if (rmlines % 100 == 0) {
+            lvl ++;
+        }
+        this.dto.setCurrentScore(point);
+        this.dto.setLineRemoved(rmlines);
+        this.dto.setLevel(lvl);
+    }
+
+    public void setDatabaseRecord(List<Player> players) {
+        this.dto.setDatabaseRecord(players);
+    }
+
+    public void setLocalRecord(List<Player> players) {
+        this.dto.setLocalRecord(players);
     }
 }
