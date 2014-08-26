@@ -1,11 +1,13 @@
 package dto;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Yukun
  * 
  */
-public class Player {
+public class Player implements Comparable<Player>, Serializable{
 
     private String name;
     private int score;
@@ -30,6 +32,11 @@ public class Player {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @Override
+    public int compareTo(Player player) {
+        return player.score - this.score;
     }
 
 }
