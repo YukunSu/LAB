@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<game>
+    <frame title="Tetris" distanceBottom="32" width="1174" height="686"
+            padding="16" border="9" sizeRol="5" lostIndex="8" maxBit="5">
+        <!-- Background window should always be first -->
+        <window className="gui.WindowBackground" x="0" y="0" w="0" h="0" />
+        <window className="gui.WindowAuthor" x="796" y="530" w="338" h="96" />
+        <window className="gui.WindowButtons" x="796" y="32" w="338" h="124" />
+        <window className="gui.WindowDatabase" x="40" y="32" w="338" h="281" />
+        <window className="gui.WindowGame" x="418" y="32" w="338" h="594" />
+        <window className="gui.WindowLevel" x="976" y="188" w="158" h="116" />
+        <window className="gui.WindowLocalRecord" x="40" y="345" w="338" h="281" />
+        <window className="gui.WindowNext" x="796" y="188" w="176" h="116" />
+        <window className="gui.WindowScore" x="796" y="336" w="338" h="164" />
+    </frame>
+    <system maxX="9" minX="0" maxY="17" minY="0" levelUp="100">
+        <!-- First point should be the center of rotation-->
+        <tetris rotate="true">
+            <point x="4" y="0" />
+            <point x="3" y="0" />
+            <point x="5" y="0" />
+            <point x="6" y="0" />
+        </tetris>
+        <tetris rotate="true">
+            <point x="4" y="0" />
+            <point x="3" y="0" />
+            <point x="5" y="0" />
+            <point x="4" y="1" />
+        </tetris>
+        <tetris rotate="true">
+            <point x="4" y="0" />
+            <point x="3" y="0" />
+            <point x="5" y="0" />
+            <point x="3" y="1" />
+        </tetris>
+        <tetris rotate="true">
+            <point x="4" y="0" />
+            <point x="5" y="0" />
+            <point x="3" y="1" />
+            <point x="4" y="1" />
+        </tetris>
+        <tetris rotate="false">
+            <point x="4" y="0" />
+            <point x="5" y="0" />
+            <point x="4" y="1" />
+            <point x="5" y="1" />
+        </tetris>
+        <tetris rotate="true">
+            <point x="4" y="0" />
+            <point x="3" y="0" />
+            <point x="5" y="0" />
+            <point x="5" y="1" />
+        </tetris>
+        <tetris rotate="true">
+            <point x="4" y="0" />
+            <point x="3" y="0" />
+            <point x="4" y="1" />
+            <point x="5" y="1" />
+        </tetris>
+    </system>
+    <data maxRow="5">
+        <!-- When database is ready, change from DataTest to Database -->
+        <dataA className="dao.DataTest">
+            <param key="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+            <param key="dbName" value="TBD" />
+            <param key="dbUrl" value="jdbc:sqlserver://127.0.0.1:1443;database=dbName" />
+            <param key="dbUsername" value="admin" />
+            <param key="dbPassword" value="admin" />
+            <param key="dbTableName" value="TBD" />
+            <param key="dbListNameUsername" value="TBD" />
+            <param key="dbListNameScore" value="TBD" />
+            <param key="dbListNameGameType" value="TBD" />
+            <param key="gameType" value="1" />
+        </dataA>
+        <dataB className="dao.DataLocal">
+            <param key="path" value="Data/records.dat" />
+        </dataB>
+    </data>
+</game>
