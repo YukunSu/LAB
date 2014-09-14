@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+import config.ConfigGame;
+
 /**
  * 
  * @author Yukun
@@ -22,6 +24,16 @@ public class Images {
      * Tetris picture
      */
     public static Image ACT = new ImageIcon("Graphics/Images/tetrisRectangles.png") .getImage();
+
+    /**
+     * Button Config picture
+     */
+    public static ImageIcon BUTTON_CONFIG = new ImageIcon("Graphics/Words/Config2.png");
+
+    /**
+     * Button Start picture
+     */
+    public static ImageIcon BUTTON_START = new ImageIcon("Graphics/Words/Start3.png");
 
     /**
      * Database title picture
@@ -42,6 +54,11 @@ public class Images {
      * Number picture
      */
     public static Image NUMBER = new ImageIcon("Graphics/Words/num02.png").getImage();
+
+    /**
+     * Pause picture
+     */
+    public static Image PAUSE = new ImageIcon("Graphics/Words/pause2.png").getImage();
 
     /**
      * Experience rectangle picture
@@ -84,9 +101,8 @@ public class Images {
     public static Image[] NEXT_ACT;
 
     static{
-        // TODO hard code
         // Next tetris picture
-        NEXT_ACT = new Image[7];
+        NEXT_ACT = new Image[ConfigGame.getConfigSystem().getTypeConfig().size()];
         for (int i = 0; i < NEXT_ACT.length; i++) {
             NEXT_ACT[i] = new ImageIcon("Graphics/Images/" + i + ".png") .getImage();
         }
