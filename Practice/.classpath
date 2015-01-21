@@ -4,6 +4,7 @@
 	<classpathentry kind="src" path="Common"/>
 	<classpathentry kind="src" path="Print"/>
 	<classpathentry kind="src" path="Inheritance"/>
+	<classpathentry kind="src" path="SimpleDatabase"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
