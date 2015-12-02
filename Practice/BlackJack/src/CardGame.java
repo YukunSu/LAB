@@ -1,15 +1,10 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class CardGame {
     public static void main(String[] args){
-        CardPile cp = new CardPile();
         int initialMoney = Integer.parseInt(args[0]);
-        ArrayList<Card> c1 = CardPile.makeFullDeck(4);
-        for(int i=0; i<c1.size(); i++){
-            cp.addToBottom(c1.get(i));
-        }
+        CardPile cp = CardPile.makeFullDeck(4);
         
         Scanner input = new Scanner(System.in);
         Scanner inputInt = new Scanner(System.in);

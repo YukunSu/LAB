@@ -30,6 +30,10 @@ public class CardPile {
         return this.numCards;
     }
     
+    public ArrayList<Card> getCardList(){
+        return this.cards;
+    }
+    
     public Card remove(int i){
         if(i<0 || i>=this.numCards) return null;
         Card result = cards.get(i);
@@ -56,26 +60,30 @@ public class CardPile {
         return result;
     }
     
-    public static ArrayList<Card> makeFullDeck(){
-        ArrayList<Card> cards = new ArrayList<Card>(52);
+    public static CardPile makeFullDeck(){
+        CardPile deck = new CardPile();
         for(Suit s : Suit.values()){
             for(Value v : Value.values()){
                 Card c = new Card(s, v);
-                cards.add(c);
+                deck.addToBottom(c);
             }
         }
-        Collections.shuffle(cards);
-        return cards;
+        Collections.shuffle(deck.getCardList());
+        return deck;
     }
     
-    public static ArrayList<Card> makeFullDeck(int n){
+    public static CardPile makeFullDeck(int n){
         ArrayList<Card> cards = new ArrayList<Card>(52*n);
-        ArrayList<Card> temp = new ArrayList<Card>(52);
+        CardPile temp = new CardPile();
         for(int i=0; i<n; i++){
             temp = makeFullDeck();
-            cards.addAll(temp);
-            temp = new ArrayList<Card>(52);
+            cards.addAll(temp.getCardList());
+            temp = new CardPile();
         }
-        return cards;
+        CardPile result = new CardPile();
+        for(int i=0; i<cards.size(); i++){
+            result.addToBottom(cards.get(i));
+        }
+        return result;
     }
 }
