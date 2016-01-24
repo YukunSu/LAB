@@ -55,8 +55,8 @@ public class PrintTriangle {
                 }
                 System.out.println();
             }
-        } catch (NumberFormatException e) {
-            System.out.println("Input should contain one character, one space and one digit.");
+        } catch (NumberFormatException|ArrayIndexOutOfBoundsException e) {
+            System.out.println("Input should contain one character, one space and one number.");
         }
     }
 }
