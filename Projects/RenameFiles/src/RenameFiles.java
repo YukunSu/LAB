@@ -4,35 +4,50 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-
 public class RenameFiles {
+    private static final String ROOT_DIRECTORY = "C:\\我的文件夹\\迅雷下载\\";
+    private static final String PREFIX_1 = "[猪猪字幕组]";
+    private static final String PREFIX_2 = "[猪猪字幕组][火影疾风传]";
+    private static final String REGEX_1 = "\\]\\[";
+    private static final String REGEX_2 = "\\]";
+    
     public static void main(String[] args){
-        File directory = new File("C:\\我的文件夹\\迅雷下载");
-        File[] fList = directory.listFiles();
-        for(int i=0; i<fList.length; i++){
-            if(fList[i].getName().startsWith("[猪猪字幕组]")){
-                File directory2 = new File("C:\\我的文件夹\\迅雷下载"+"\\"+fList[i].getName());
-                File[] fList2 = directory2.listFiles();
-                for(int j=0; j<fList2.length; j++){
-                    if(fList2[j].getName().equals(fList[i].getName())){
+        File directory = new File(ROOT_DIRECTORY);
+        File[] files1 = directory.listFiles();
+        for(int i=0; i<files1.length; i++){
+            String folderName = "";
+            if(files1[i].isDirectory()){
+                folderName = files1[i].getName();
+            }
+
+            if(folderName.startsWith(PREFIX_1)){
+                File subDirectory = new File(ROOT_DIRECTORY+folderName);
+                File[] files2 = subDirectory.listFiles();
+                for(int j=0; j<files2.length; j++){
+                    String fileName = "";
+                    if(files2[j].isFile()){
+                        fileName = files2[j].getName();
+                    }
+                    
+                    if(fileName.equals(folderName)){
                         try {
-                            String originalName = fList2[j].getName();
-                            String[] ss = originalName.split("\\]\\[");
-                            String[] sss = ss[4].split("\\]");
-                            String last = sss[1];
-                            String newName = "";
-                            if(fList2[j].getName().startsWith("[猪猪字幕组][火影疾风传]")){
-                                int ii = Integer.parseInt(ss[2]);
-                                newName = "火影忍者 - " + ss[2] + last;
+                            String originalFileName = fileName;
+                            String[] parts = originalFileName.split(REGEX_1);
+                            String[] subParts = parts[4].split(REGEX_2);
+                            String extension = subParts[1];
+                            String newFileName = "";
+                            if(fileName.startsWith(PREFIX_2)){
+                                int episodeIntegerNumber = Integer.parseInt(parts[2]);
+                                newFileName = "火影忍者 - " + parts[2] + extension;
                             } else {
-                                int ii = Integer.parseInt(ss[3]);
-                                newName = ss[3] + last;
+                                int episodeIntegerNumber = Integer.parseInt(parts[3]);
+                                newFileName = parts[3] + extension;
                             }
-                            System.out.println(originalName + ">>>>>>>>" + newName);
-                            Path a = Paths.get("C:\\我的文件夹\\迅雷下载"+"\\"+fList[i].getName()+"\\"+fList2[j].getName());
-                            Files.move(a, a.resolveSibling("C:\\我的文件夹\\迅雷下载\\" + newName), StandardCopyOption.REPLACE_EXISTING);
+                            
+                            System.out.println(originalFileName + " >>>>>>>> " + newFileName);
+                            Path targetFile = Paths.get(ROOT_DIRECTORY+folderName+"\\"+fileName);
+                            Files.move(targetFile, targetFile.resolveSibling(ROOT_DIRECTORY + newFileName), StandardCopyOption.REPLACE_EXISTING);
                         } catch (Exception e) {
-                            // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
                     }
