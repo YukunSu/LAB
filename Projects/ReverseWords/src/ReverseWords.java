@@ -2,8 +2,48 @@
 public class ReverseWords {
     public static void main(String[] args){
         String temp = "We'd be giving up a booseter and effectively cancelling Taiyang Shen.";
-        temp = reverseWords(temp);
+        String temp2 = temp;
+        //temp = reverseWords(temp);
+        //System.out.println(temp);
+        temp = reverse(temp2);
         System.out.println(temp);
+    }
+    
+    public static String reverse(String s){
+        String result = "";
+        result = s;
+        char[] cArray = reverse(result.toCharArray(), 0, result.length()-1);
+        //System.out.println("kkk   " + new String(cArray));
+        int start = 0;
+        int end = 0;
+        while(end<cArray.length){
+            if(cArray[end]==' '|| end==cArray.length-1){
+                //System.out.println(start + "    " + end);
+                if(end==cArray.length-1){
+                    reverse(cArray, start, end);
+                }else{
+                    reverse(cArray, start, end-1);
+                }
+                start = end + 1;
+            }
+            end++;
+        }
+        return new String(cArray);
+    }
+    
+    private static char[] reverse(char[] c, int start, int end){
+        int a=start;
+        int b=end;
+        while(a<b){
+            char t = c[a];
+            c[a] = c[b];
+            c[b] = t;
+            a++;
+            b--;
+            //System.out.println("===== " + new String(c));
+        }
+        //System.out.println("jjj " + new String(c));
+        return c;
     }
     
     public static String reverseWords(String s){
